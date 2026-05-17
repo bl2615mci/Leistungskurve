@@ -6,25 +6,19 @@ from sort import bubble_sort
 
 
 def main():
-    # Daten aus CSV laden
+    #csv
     data = load_data("activity.csv")
-
-    # Leistungswerte auslesen
     power_values = data["PowerOriginal"]
-
-    # In Liste umwandeln
     power_values = list(power_values)
 
-    # Mit eigenem Sortieralgorithmus sortieren
+    #sort
     sorted_values = bubble_sort(power_values)
-
-    # Umdrehen: größte Werte zuerst
     sorted_values = sorted_values[::-1]
 
-    # Ordner figures erstellen
+    #figures
     os.makedirs("figures", exist_ok=True)
 
-    # Grafik erstellen
+    #graph
     plt.figure(figsize=(10, 5))
     plt.plot(sorted_values)
 
@@ -32,8 +26,7 @@ def main():
     plt.ylabel("Leistung (W)")
     plt.title("Power Curve")
     plt.grid(True)
-
-    # Grafik speichern
+    
     plt.savefig("figures/power_curve.png")
 
     print("Grafik gespeichert unter figures/power_curve.png")
